@@ -10,8 +10,10 @@ function Snake() {
     this.tail = [];
 
     this.update = function update() {
-        for (var i = 0; i < this.tail.length-1; i++) {
-            this.tail[i] = this.tail[i+1];
+        if (this.total === this.tail.length) {
+            for (var i = 0; i < this.tail.length - 1; i++) {
+                this.tail[i] = this.tail[i + 1];
+            }
         }
         this.tail[this.total-1] = createVector(this.x, this.y);
 
@@ -34,7 +36,7 @@ function Snake() {
 
     this.show = function show() {
         fill(255);
-        for (var i = 0; i < this.total-1; i++) {
+        for (var i = 0; i < this.tail.length; i++) {
             rect(this.tail[i].x, this.tail[i].y, scl, scl);
         }
         rect(this.x, this.y, scl, scl);
